@@ -1,0 +1,446 @@
+body  {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.full-height {
+    height: 100%;
+    background: lightgreen;
+}
+
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Dosis:400,700");
+
+:root {
+ 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font: 16px/1.5 "Dosis", sans-serif;
+    /*IE FIX*/
+    /*display: flex;
+  flex-direction: column;*/
+}
+
+/* CONTAINER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+    .wrapper > * {
+        padding: 20px;
+    }
+
+
+/* HEADER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-header {
+    background: var(--main-white-color);
+    
+}
+
+    .page-header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .page-header ul {
+        display: flex;
+        order: 1;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+        .page-header ul li:not(:last-child) {
+            padding-right: 15px;
+        }
+
+    .page-header .cta-contact {
+        font-family: inherit;
+        font-size: 1.2rem;
+        padding: 5px 18px;
+        border: 1px solid;
+        border-radius: 5px;
+    }
+
+
+/* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    min-height: 400px;
+    min-width: 800px;
+    /*   background:  url('logo.png');  */
+ 
+    align-content: center;
+ 
+}
+
+    .page-main div {
+        align-content: center;
+        max-width: 800px;
+    }
+
+    .page-main h1 {
+        margin-bottom: 20px;
+    }
+
+    .page-main p + p {
+        margin-top: 10px;
+    }
+
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-footer {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--main-white-color);
+}
+
+    .page-footer ul {
+        display: flex;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+        .page-footer ul li:not(:last-child) {
+            margin-right: 20px;
+        }
+
+
+/* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 550px) {
+    .page-header ul {
+        width: auto;
+        margin-top: 0;
+    }
+
+    .page-header .cta-contact {
+        order: 1;
+    }
+
+    .page-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .page-footer ul {
+            margin-bottom: 0;
+        }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .page-main {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+}
+
+
+@media screen and (max-width: 990px) {
+    .page-header, .page-footer {
+        display: none !important;
+    }
+
+}
+
+#root {
+    top: 50%;
+    left: 50%;
+    display: block;
+    position: absolute;
+    /*  background: url('http://i.imgur.com/DkNND.png') no-repeat;*/
+    /* background: url('logo.png') no-repeat;*/
+    background-size: 750px 400px;
+    width: 800px;
+    height: 433px;
+    margin-top: -216px; /* HALF OF THE HEIGHT */
+    margin-left: -400px; /* HALF OF THE WIDTH */
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+    }
+}
+
+/* When a layer is 'checked' (via checkedLayers prop).*/
+[aria-checked="true"] {
+    animation: dash 7s;
+    animation-delay: 0s;
+    animation-timing-function: ease-in;
+    fill: #87ceeb;
+    fill-opacity: 0.2;
+}
+
+@keyframes dash {
+    from {
+        fill-opacity: 0;
+        
+    }
+    to {
+        fill-opacity: 0.2;
+
+    }
+}
+
+.score1 {
+    text-align: right;
+    z-index: 3;
+    position: relative;
+    top: 0px;
+    left: -160px;
+    animation-delay: 0s;
+    animation-duration: 1.6s;
+    animation-name: slidein;
+}
+
+
+
+.score2 {
+    text-align: right;
+    z-index: 3;
+    position: relative;
+    font-weight: bold;
+    top: 0px;
+    left: -160px;
+    animation-delay: 0s;
+    animation-duration: 1.8s;
+    animation-name: slidein;
+}
+
+
+.score3 {
+     
+    min-height: 1rem;
+    font-size: 1rem;
+     
+    font-weight: bold;
+    text-align: right;
+    z-index: 3;
+    top: -250px;
+    left: -140px;
+    position: relative;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+
+.score4 {
+    min-height: 1.4rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: right;
+    z-index: 3;
+    top: 00px;
+    left: -160px;
+    position: relative;
+    animation-delay: 0s;
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+
+
+.score5 {
+    text-align: left;
+    animation-delay: 0s;
+    animation-duration: 10s;
+    animation-name: fadein;
+    z-index: 3;
+    position: relative;
+    top: -200px;
+    left: 430px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 7px;
+     
+}
+
+.notification {
+    position: relative;
+    top: 20px;
+    left: 0px;
+}
+.birdlabel {
+    color: #815440;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 7px;
+    min-height: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-name: growShrink;
+    z-index: 3;
+    position: relative;
+    top: 40px;
+    left: 0px;
+    font-style: italic;
+    color: white;
+    -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    transition: all .2s ease-in-out;
+}
+
+
+.hint {
+    min-height: 3rem;
+    font-size: 3rem;
+    text-align: center;
+    animation-delay: 0s;
+    animation-duration: 3;
+    animation-name: fadein;
+    z-index: 3;
+    position: relative;
+    top: -90px;
+    left: 0px;
+    font-style: italic;
+    color: white;
+    -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+}
+
+
+
+.birdFact {
+    color: #815440;
+    background: rgba(255, 255, 255, 0.8);
+    border: 6px solid #f3e82f;
+    min-height: 1.8rem;
+    font-size: 1.8rem;
+    text-align: center;
+    animation-delay: 0s;
+    animation-duration: 3;
+    animation-name: fadein;
+    z-index: 3;
+    position: relative;
+    top: 0px;
+    left: 50px;
+    font-style: italic;
+    border-radius: 5px;
+    max-width: 360px;
+    padding: 7px;
+}
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+        margin-left: 100%;
+        width: 300%;
+    }
+
+
+
+
+
+    75% {
+        opacity: 1;
+        font-size: 100%;
+        margin-left: 25%;
+        width: 150%;
+    }
+
+
+
+
+
+    to {
+        opacity: 1;
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+ 
+    }
+
+    75% {
+        opacity: 0;
+ 
+    }
+
+    to {
+        opacity: 1;
+ 
+    }
+}
+
+
+@keyframes growShrink {
+    from {
+        transform: scale(1);
+
+    }
+
+    50% {
+        transform: scale(2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+

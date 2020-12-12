@@ -1,0 +1,26 @@
+
+
+
+Load SVG with class="hotspot + bird_id "     
+
+swap the path
+
+dont try to change the svg attributes 
+ -  add 
+ 
+ 
+ 
+ 1)  Load SVG in React
+ 
+ 
+ 2)  try to add an onclick function:
+ 
+ 
+     $(document).ready(function () {
+        $('path').click(function () {
+            alert($(this).attr('id'));
+        });
+    });
+	
+	
+	to get the path id of one of the SVGs
