@@ -223,7 +223,7 @@ const birds = {
     18: 'curlew',
     19: 'firecrest',
     20: 'golden-eagle',
-    21: 'golden-oriele',
+    21: 'golden-oriole',
     22: 'golden-pheasent',
     23: 'goldfinch',
     24: 'goshawk',
