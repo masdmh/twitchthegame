@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useEffect, useState, useCallback  } from "react";
 import './App.css';
+import BackgroundImageOnLoad from 'background-image-on-load';
 //  JSON files generated from prep'ed SVGs at https://react-vector-maps.netlify.app/converter/
 import { VectorMap } from '@south-paw/react-vector-maps';
 import Slide1 from './deck_birds/json/Slide1.json';
@@ -352,14 +353,20 @@ function App() {
 
     const [rightSlide, setRightSlide] = React.useState(rand);
 
+    const bgLeft = "./slides/Slide" + leftSlide + ".png";
+    const bgRight = "./slides/Slide" + rightSlide + ".png";
+    const bgLoading = "./card_plain.png";
+    const [bgRightIsLoaded, setBgRightIsLoaded]  = useState(false);
+    const [bgLeftIsLoaded, setBgLeftIsLoaded]  = useState(false);
 
+    
 
     const style_left = {
-        BackgroundSize: 'contain', width: '338px',  opacity: 1, fill: 'transparent', backgroundImage: `url(./slides/Slide` + leftSlide + `.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center center`,
+        BackgroundSize: 'contain', width: '338px',  opacity: 1, fill: 'transparent', backgroundImage: `url(${bgLeftIsLoaded ? bgLeft : bgLoading })`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center center`,
     };
 
     const style_right = {
-        BackgroundSize: 'contain', width: '338px',  opacity: 1, fill: 'transparent', backgroundImage: `url(./slides/Slide` + rightSlide + `.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center center`,
+        BackgroundSize: 'contain', width: '338px',  opacity: 1, fill: 'transparent', backgroundImage: `url(${bgRightIsLoaded ? bgRight : bgLoading })`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center center`,
     };
 
     // const [hovered, setHovered] = React.useState('None');
@@ -385,13 +392,6 @@ function App() {
         'amber': '#df7a1c',
         'red': '#dc4f16'
     }
-
-
-
-
-
-
-
 
     var LeftMap = json_slides[leftSlide];
     var RightMap = json_slides[rightSlide];
@@ -460,16 +460,22 @@ function App() {
         let interval = null;
  
         if (seconds > 0) {
+            
+            if  (bgLeftIsLoaded && bgRightIsLoaded ){ 
+
             interval = setInterval(() => {
                 setSeconds(seconds => seconds - 1);  // 
             }, 1000);
+
+            }
+
         } else {
             updateStatus();
 
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [seconds, updateStatus]);
+    }, [seconds, updateStatus, bgLeftIsLoaded, bgRightIsLoaded]);
 
 
  
@@ -531,6 +537,8 @@ function App() {
         }
 
 
+        
+
 
     }
 
@@ -588,6 +596,10 @@ function App() {
                 resetSlides();
 
                 setSeconds(10);
+
+                setBgLeftIsLoaded(false);	
+
+                setBgRightIsLoaded(false);	
 
             } else {
                 ReactDOM.render(
@@ -677,28 +689,38 @@ function App() {
                     </Grid.Row>
 
                     <Grid.Row columns={2}>
-                            <Grid.Column>
-                               <div style={style_left}>
-                                <VectorMap {...LeftMap} layerProps={layerProps} width={"333px"} height={"333px"} checkedLayers={[solution]} />
-                                
-
+                        <Grid.Column>
+                            <div style={style_left}>
+                                    <VectorMap {...LeftMap} layerProps={layerProps} width={"333px"} height={"333px"} checkedLayers={[solution]} />
                             </div>
-                          
-                    </Grid.Column>
-                    <Grid.Column>
+                        </Grid.Column>
+                        <Grid.Column>
                             <div style={style_right}>
-                              
                                 <VectorMap {...RightMap} layerProps={layerProps} width={"333px"} height={"333px"} checkedLayers={[solution]}  />
                             </div>
-                             
-                            
-                           
-                    </Grid.Column>
+                        </Grid.Column>
                     </Grid.Row>
-                    
-                  
+                                      
 
                     </Grid>
+                    <BackgroundImageOnLoad	
+                        src={bgLeft}
+                        onLoadBg={() =>	{
+                            setBgLeftIsLoaded(true);	
+                            console.log('bgLeftIsLoaded', bgLeftIsLoaded);
+                        }	
+                       } 	
+                    />	
+                    <BackgroundImageOnLoad	
+                        src={bgRight}	
+                        onLoadBg={() =>	{
+                            setBgRightIsLoaded(true);	
+                            console.log('bgRightIsLoaded', bgRightIsLoaded);
+                        }
+                    }	
+                    />	
+                         
+
                   
             </div>
             <h5 className="hint" style={{ textAlign: "center" }}> {hint} </h5>
@@ -767,7 +789,7 @@ function GameOver(finalscore, found, status, solution) {
 
                     <Grid.Column>
                         <div>
-                            <img alt="twitch-card" src={bird_images[solution]} style={{
+                            <img className="birdHero" alt="twitch-card" src={bird_images[solution]} style={{
                                 position: "relative",
                                 top: "-10px",
                                 left: "-50px",
