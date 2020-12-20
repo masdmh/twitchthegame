@@ -40,7 +40,6 @@ import Slide44 from './deck_birds/json/Slide44.json';
 import Slide45 from './deck_birds/json/Slide45.json';
 import "semantic-ui-css/semantic.min.css";
 import { Grid } from 'semantic-ui-react';
- 
 
 import bird1 from './outputs-watercolor/arctic-skua.png';
 import bird2 from './outputs-watercolor/barn-owl.png';
@@ -101,7 +100,6 @@ import bird56 from './outputs-watercolor/waxwing.png';
 import bird57 from './outputs-watercolor/yellowhammer.png';
 
 
-// 
 
 const bird_images = {
     1: bird1,
@@ -343,16 +341,17 @@ function App() {
     var min = 1;
     var max = 16;
     var rand = min + Math.floor(Math.random() * (max - min));
+    console.log(" TODO return to randon initialisation of slides" + rand );
 
     const [leftSlide, setLeftSlide] = React.useState(rand);   // rand
-
+    
     min = 17;
     max = 32;
     rand = min + Math.floor(Math.random() * (max - min));
 
 
     const [rightSlide, setRightSlide] = React.useState(rand);
-
+    
     const bgLeft = "./slides/Slide" + leftSlide + ".png";
     const bgRight = "./slides/Slide" + rightSlide + ".png";
     const bgLoading = "./card_plain.png";
@@ -379,7 +378,8 @@ function App() {
     var [score, setScore] = React.useState(0);
     var [found, setFound] = React.useState(0);
     var [turns, setTurns] = React.useState(0);
-
+    //const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    //console.log(highScores);
     
     //var [topscore, setTopscore] = React.useState(0);
 
@@ -451,7 +451,6 @@ function App() {
                 GameOver(score, found, status, solution),
                 document.getElementById('root')
             );
-            ;
         }
     }, [status, conservationStatusList, score, found, solution])
 
@@ -512,8 +511,6 @@ function App() {
             console.log('*******  error in code *********')
             console.log('newLeft = ' + leftSlide);
             console.log('... but state variable leftSlide = ' + leftSlide);
-
-            
         }
 
         let newRightKey = getRandomInt(nextSlides);
@@ -634,7 +631,7 @@ function App() {
 
     var hint = ''
     if (seconds < 8 ) {
-        hint = titleCase(birds[solution]);
+        hint = titleCase(birds[solution]) + "?";
     } else {
         hint = ''
     }
@@ -643,7 +640,7 @@ function App() {
 
         <>
  
-
+            <div id='highscore'></div>
             <div id='game'>
 
               
@@ -744,10 +741,9 @@ function App() {
     
 // }
 
+
+
 function GameOver(finalscore, found, status, solution) {
-
-
-    
 
     let conservation_bonus = 0;
     if (status === 'green') {
@@ -756,13 +752,16 @@ function GameOver(finalscore, found, status, solution) {
     if (status === 'amber') {
         conservation_bonus = 5;
     }
-
- 
    
     let title = titleCase(birds[solution]);
 
- 
+    let derivedscore = finalscore + found + conservation_bonus;
 
+    // let username = 'CPU';
+    console.log("saving score");
+    
+    const userhighscore = saveHighScores(derivedscore);
+    console.log("xxx high  score "  + userhighscore);
     /* todo make this load the game without requesting the entire app */
     return (
         <>
@@ -775,7 +774,7 @@ function GameOver(finalscore, found, status, solution) {
                             alignItems: "center",
                             /* backgroundColor: "#dc4f16" */
                         }}>
-                            <h3 className="birdlabel">You scored {finalscore + found + conservation_bonus} points</h3>
+                            <h3 className="birdlabel">Your score: {derivedscore}  High score: {userhighscore}</h3>
                         </div>
                     </Grid.Column>
                 </Grid.Row>
@@ -824,4 +823,21 @@ function titleCase(str) {
 
     return final.join(' ')
 
+}
+
+function saveHighScores(derivedscore){
+
+     
+    //const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    var hs = localStorage.getItem('highScores');
+    console.log("previous highscore " + hs);
+    if ( derivedscore > parseInt(hs) ) {
+         localStorage.setItem('highScores', derivedscore);
+         console.log("congratulations a new highscore");
+         return derivedscore;
+    }
+
+    return hs; 
+    
 }

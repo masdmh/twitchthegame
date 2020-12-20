@@ -319,21 +319,18 @@ body {
 }
 
 .hint {
-  min-height: 3rem;
-  font-size: 3rem;
+  min-height: 2rem;
+  font-size: 1.2rem;
   text-align: center;
   animation-delay: 0s;
   animation-duration: 3;
   animation-name: fadein;
   z-index: 3;
   position: relative;
-  top: -90px;
+  top: -70px;
   left: 0px;
   font-style: italic;
-  color: white;
-  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  color: black;
 }
 
 .birdHero {
