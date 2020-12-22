@@ -38,6 +38,7 @@ import Slide31 from './deck_birds/json/Slide31.json';
 import Slide32 from './deck_birds/json/Slide32.json';
 import Slide44 from './deck_birds/json/Slide44.json';
 import Slide45 from './deck_birds/json/Slide45.json';
+import Slide57 from './deck_birds/json/Slide57.json';
 import "semantic-ui-css/semantic.min.css";
 import { Grid } from 'semantic-ui-react';
 
@@ -195,7 +196,8 @@ const json_slides = {
     31: Slide31,
     32: Slide32,
     44: Slide44,
-    45: Slide45
+    45: Slide45,
+    57: Slide57
 }
 var all_slides = Object.keys(json_slides);
 
@@ -335,14 +337,13 @@ function App() {
 
  
     // if score > 50 then display voucher for discount in store?
-    const [seconds, setSeconds] = useState(10);
+    const [seconds, setSeconds] = useState(20);
  
 
     var min = 1;
     var max = 16;
     var rand = min + Math.floor(Math.random() * (max - min));
-    console.log(" TODO return to randon initialisation of slides" + rand );
-
+    // console.log (rand);
     const [leftSlide, setLeftSlide] = React.useState(rand);   // rand
     
     min = 17;
@@ -378,6 +379,7 @@ function App() {
     var [score, setScore] = React.useState(0);
     var [found, setFound] = React.useState(0);
     var [turns, setTurns] = React.useState(0);
+    var [hint, setHint] = React.useState('');
     //const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
     //console.log(highScores);
     
@@ -392,6 +394,12 @@ function App() {
         'amber': '#df7a1c',
         'red': '#dc4f16'
     }
+    const statusMessage = {
+        'green': 'Conservation status (GREEN).  Find the matching pairs of birds as fast as you can...',
+        'amber': 'Conservation status (AMBER).  Are you using the clues?',
+        'red': 'Conservation status (RED).  Look out for birds while you still can!!!'
+    }
+    
 
     var LeftMap = json_slides[leftSlide];
     var RightMap = json_slides[rightSlide];
@@ -441,7 +449,7 @@ function App() {
             current_status_list = conservationStatusList.slice(1);
             setStatus(current_status_list[0]);
             setConservationStatusList(current_status_list);
-            setSeconds(10);
+            setSeconds(20);
 
         } else {
             // game_status = 'over';
@@ -464,6 +472,13 @@ function App() {
 
             interval = setInterval(() => {
                 setSeconds(seconds => seconds - 1);  // 
+
+                if (seconds < 12 ) {
+                    let clue = titleCase(birds[solution]);
+                    setHint( "Clue: " + clue   );
+                } 
+            
+
             }, 1000);
 
             }
@@ -474,7 +489,7 @@ function App() {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [seconds, updateStatus, bgLeftIsLoaded, bgRightIsLoaded]);
+    }, [seconds, updateStatus, bgLeftIsLoaded, bgRightIsLoaded, hint, solution]);
 
 
  
@@ -582,6 +597,14 @@ function App() {
         // setClicked(clicked_bird);   // not needed
         if (clicked_bird === solution) {
 
+            console.log(" solution xxxxxxxxxxxxx: " + solution  );
+            if ( parseInt(solution) === 55){
+                // give a status bonus just for fun!
+                setStatus('green');
+                setConservationStatusList(['green', 'amber', 'red']);
+                setHint('TWITCH!  Conservation Status has been upgraded to "Green"');
+            }
+
             setTurns(turns + 1);
 
             setFound(found + 1);
@@ -592,20 +615,26 @@ function App() {
 
                 resetSlides();
 
-                setSeconds(10);
+                setSeconds(20);
 
                 setBgLeftIsLoaded(false);	
 
                 setBgRightIsLoaded(false);	
+                
+               
+
 
             } else {
+
+                setHint(' Well done you spotted 10 birds.  Game over. ')
+
                 ReactDOM.render(
                     GameOver(score, found, status, solution),
                     document.getElementById('root')
                 );
             }
 
-            // alert('Well done! \n\nYou have just found a ' + titleCase(birds[clicked_bird]) + '!   \n\nOK to keep looking out for birds?' );
+            setHint('Well done! You have just found a ' + titleCase(birds[clicked_bird])  );
 
             // wellDone(clicked_bird);
 
@@ -629,35 +658,26 @@ function App() {
 
  
 
-    var hint = ''
-    if (seconds < 8 ) {
-        hint = titleCase(birds[solution]) + "?";
-    } else {
-        hint = ''
-    }
 
     return (
 
         <>
  
-            <div id='highscore'></div>
+            
             <div id='game'>
-
-              
-                        
                 <Grid align="Center">
-
-
                     <Grid.Row columns={1} >
-
                         <Grid.Column>
                             <div style={{
+                                position: "absolute",
+                                top: "2px",
+                                width: "100%",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
                                 backgroundColor: statusKey[status]
                             }}>
-                                <h3 style={{ color: "white" }}>Find the matching pairs of birds ... while you can!</h3>
+                                <h3 style={{ color: "white" }}>{statusMessage[status]}</h3>
                                 
                             </div>
                             <div style={{ position: "absolute", top: "45px", left: "50%" }}>
@@ -697,8 +717,22 @@ function App() {
                             </div>
                         </Grid.Column>
                     </Grid.Row>
-                                      
-
+                    <Grid.Row columns={1} >
+                        <Grid.Column>
+                            <div style={{
+                                position: "absolute",
+                                top: "-25px",
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                backgroundColor: statusKey[status]
+                            }}>
+                                <h5 style={{ color: "white" }}>{hint}</h5>
+                                
+                            </div>          
+                            </Grid.Column>
+                    </Grid.Row>
                     </Grid>
                     <BackgroundImageOnLoad	
                         src={bgLeft}
@@ -720,7 +754,7 @@ function App() {
 
                   
             </div>
-            <h5 className="hint" style={{ textAlign: "center" }}> {hint} </h5>
+            
        </>
     );
 }
@@ -760,11 +794,25 @@ function GameOver(finalscore, found, status, solution) {
     // let username = 'CPU';
     console.log("saving score");
     
-    const userhighscore = saveHighScores(derivedscore);
-    console.log("xxx high  score "  + userhighscore);
+    let hs = {}
+    hs = saveHighScores(derivedscore);
+    console.log("xxx high  score "  + hs.score + " by player " +  hs.player );
     /* todo make this load the game without requesting the entire app */
     return (
-        <>
+        <>  
+         <div style={{
+                                position: "absolute",
+                                top: "2px",
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                backgroundColor: "black"
+                            }}>
+                                <h3 style={{ color: "white" }}> High score: &nbsp; &nbsp; {hs.player} ............ {hs.score} points</h3>
+                                
+                            </div>
+         
             <Grid align="Center">
                 <Grid.Row columns={1} >
                     <Grid.Column>
@@ -774,7 +822,8 @@ function GameOver(finalscore, found, status, solution) {
                             alignItems: "center",
                             /* backgroundColor: "#dc4f16" */
                         }}>
-                            <h3 className="birdlabel">Your score: {derivedscore}  High score: {userhighscore}</h3>
+                            <h3 className="birdlabel">Your score: {derivedscore} points</h3>  
+                          
                         </div>
                     </Grid.Column>
                 </Grid.Row>
@@ -830,14 +879,17 @@ function saveHighScores(derivedscore){
      
     //const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-    var hs = localStorage.getItem('highScores');
+    var hs = localStorage.getItem('highScores') || 0;
+    var playername = localStorage.getItem('playername') || "BTO";
     console.log("previous highscore " + hs);
     if ( derivedscore > parseInt(hs) ) {
          localStorage.setItem('highScores', derivedscore);
-         console.log("congratulations a new highscore");
-         return derivedscore;
+         playername = prompt("Congratulations! \nYou made a new highscore. \nPlease enter your name, (in 20 characters)");
+         playername = playername.substr(0,20);
+         localStorage.setItem('playername', playername);
+         return { 'score': derivedscore, 'player': playername};
     }
 
-    return hs; 
+    return {'score' : hs, 'player': playername}; 
     
 }
