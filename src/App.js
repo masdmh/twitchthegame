@@ -4,40 +4,68 @@ import './App.css';
 import BackgroundImageOnLoad from 'background-image-on-load';
 //  JSON files generated from prep'ed SVGs at https://react-vector-maps.netlify.app/converter/
 import { VectorMap } from '@south-paw/react-vector-maps';
-import Slide1 from './deck_birds/json/Slide1.json';
-import Slide2 from './deck_birds/json/Slide2.json';
-import Slide3 from './deck_birds/json/Slide3.json';
-import Slide4 from './deck_birds/json/Slide4.json';
-import Slide5 from './deck_birds/json/Slide5.json';
-import Slide6 from './deck_birds/json/Slide6.json';
-import Slide7 from './deck_birds/json/Slide7.json';
-import Slide8 from './deck_birds/json/Slide8.json';
-import Slide9 from './deck_birds/json/Slide9.json';
-import Slide10 from './deck_birds/json/Slide10.json';
-import Slide11 from './deck_birds/json/Slide11.json';
-import Slide12 from './deck_birds/json/Slide12.json';
-import Slide13 from './deck_birds/json/Slide13.json';
-import Slide14 from './deck_birds/json/Slide14.json';
-import Slide15 from './deck_birds/json/Slide15.json';
-import Slide16 from './deck_birds/json/Slide16.json';
-import Slide17 from './deck_birds/json/Slide17.json';
-import Slide18 from './deck_birds/json/Slide18.json';
-import Slide19 from './deck_birds/json/Slide19.json';
-import Slide20 from './deck_birds/json/Slide20.json';
-import Slide21 from './deck_birds/json/Slide21.json';
-import Slide22 from './deck_birds/json/Slide22.json';
-import Slide23 from './deck_birds/json/Slide23.json';
-import Slide24 from './deck_birds/json/Slide24.json';
-import Slide25 from './deck_birds/json/Slide25.json';
-import Slide26 from './deck_birds/json/Slide26.json';
-import Slide27 from './deck_birds/json/Slide27.json';
-import Slide28 from './deck_birds/json/Slide28.json';
-import Slide29 from './deck_birds/json/Slide29.json';
-import Slide30 from './deck_birds/json/Slide30.json';
-import Slide31 from './deck_birds/json/Slide31.json';
-import Slide32 from './deck_birds/json/Slide32.json';
+// import Slide1 from './deck_birds/json/Slide1.json';
+// import Slide2 from './deck_birds/json/Slide2.json';
+// import Slide3 from './deck_birds/json/Slide3.json';
+// import Slide4 from './deck_birds/json/Slide4.json';
+// import Slide5 from './deck_birds/json/Slide5.json';
+// import Slide6 from './deck_birds/json/Slide6.json';
+// import Slide7 from './deck_birds/json/Slide7.json';
+// import Slide8 from './deck_birds/json/Slide8.json';
+// import Slide9 from './deck_birds/json/Slide9.json';
+// import Slide10 from './deck_birds/json/Slide10.json';
+// import Slide11 from './deck_birds/json/Slide11.json';
+// import Slide12 from './deck_birds/json/Slide12.json';
+// import Slide13 from './deck_birds/json/Slide13.json';
+// import Slide14 from './deck_birds/json/Slide14.json';
+// import Slide15 from './deck_birds/json/Slide15.json';
+// import Slide16 from './deck_birds/json/Slide16.json';
+// import Slide17 from './deck_birds/json/Slide17.json';
+// import Slide18 from './deck_birds/json/Slide18.json';
+// import Slide19 from './deck_birds/json/Slide19.json';
+// import Slide20 from './deck_birds/json/Slide20.json';
+// import Slide21 from './deck_birds/json/Slide21.json';
+// import Slide22 from './deck_birds/json/Slide22.json';
+// import Slide23 from './deck_birds/json/Slide23.json';
+// import Slide24 from './deck_birds/json/Slide24.json';
+// import Slide25 from './deck_birds/json/Slide25.json';
+// import Slide26 from './deck_birds/json/Slide26.json';
+// import Slide27 from './deck_birds/json/Slide27.json';
+// import Slide28 from './deck_birds/json/Slide28.json';
+// import Slide29 from './deck_birds/json/Slide29.json';
+// import Slide30 from './deck_birds/json/Slide30.json';
+// import Slide31 from './deck_birds/json/Slide31.json';
+// import Slide32 from './deck_birds/json/Slide32.json';
+
+import Slide33 from './deck_birds/json/Slide33.json';
+import Slide34 from './deck_birds/json/Slide34.json';
+import Slide35 from './deck_birds/json/Slide35.json';
+import Slide36 from './deck_birds/json/Slide36.json';
+import Slide37 from './deck_birds/json/Slide37.json';
+import Slide38 from './deck_birds/json/Slide38.json';
+import Slide39 from './deck_birds/json/Slide39.json';
+import Slide40 from './deck_birds/json/Slide40.json';
+import Slide41 from './deck_birds/json/Slide41.json';
+import Slide42 from './deck_birds/json/Slide42.json';
+import Slide43 from './deck_birds/json/Slide43.json';
+
 import Slide44 from './deck_birds/json/Slide44.json';
 import Slide45 from './deck_birds/json/Slide45.json';
+
+import Slide46 from './deck_birds/json/Slide46.json';
+import Slide47 from './deck_birds/json/Slide47.json';
+import Slide48 from './deck_birds/json/Slide48.json';
+import Slide49 from './deck_birds/json/Slide49.json';
+
+import Slide50 from './deck_birds/json/Slide50.json';
+import Slide51 from './deck_birds/json/Slide51.json';
+import Slide52 from './deck_birds/json/Slide52.json';
+import Slide53 from './deck_birds/json/Slide53.json';
+import Slide54 from './deck_birds/json/Slide54.json';
+import Slide55 from './deck_birds/json/Slide55.json';
+import Slide56 from './deck_birds/json/Slide56.json';
+
+
 import Slide57 from './deck_birds/json/Slide57.json';
 import "semantic-ui-css/semantic.min.css";
 import { Grid } from 'semantic-ui-react';
@@ -163,40 +191,63 @@ const bird_images = {
 }
 
 const json_slides = {
-    1: Slide1,
-    2: Slide2,
-    3: Slide3,
-    4: Slide4,
-    5: Slide5,
-    6: Slide6,
-    7: Slide7,
-    8: Slide8,
-    9: Slide9,
-    10: Slide10,
-    11: Slide11,
-    12: Slide12,
-    13: Slide13,
-    14: Slide14,
-    15: Slide15,
-    16: Slide16,
-    17: Slide17,
-    18: Slide18,
-    19: Slide19,
-    20: Slide20,
-    21: Slide21,
-    22: Slide22,
-    23: Slide23,
-    24: Slide24,
-    25: Slide25,
-    26: Slide26,
-    27: Slide27,
-    28: Slide28,
-    29: Slide29,
-    30: Slide30,
-    31: Slide31,
-    32: Slide32,
+    // 1: Slide1,
+    // 2: Slide2,
+    // 3: Slide3,
+    // 4: Slide4,
+    // 5: Slide5,
+    // 6: Slide6,
+    // 7: Slide7,
+    // 8: Slide8,
+    // 9: Slide9,
+    // 10: Slide10,
+    // 11: Slide11,
+    // 12: Slide12,
+    // 13: Slide13,
+    // 14: Slide14,
+    // 15: Slide15,
+    // 16: Slide16,
+    // 17: Slide17,
+    // 18: Slide18,
+    // 19: Slide19,
+    // 20: Slide20,
+    // 21: Slide21,
+    // 22: Slide22,
+    // 23: Slide23,
+    // 24: Slide24,
+    // 25: Slide25,
+    // 26: Slide26,
+    // 27: Slide27,
+    // 28: Slide28,
+    // 29: Slide29,
+    // 30: Slide30,
+    // 31: Slide31,
+    // 32: Slide32,
+    
+    33: Slide33,
+    34: Slide34,
+    35: Slide35,
+    36: Slide36,
+    37: Slide37,
+    38: Slide38,
+    39: Slide39,
+    40: Slide40,
+    41: Slide41,
+    42: Slide42,
+    43: Slide43,
     44: Slide44,
     45: Slide45,
+    46: Slide46,
+    47: Slide47,
+    48: Slide48,
+    49: Slide49,
+    50: Slide50,
+    51: Slide51,
+    52: Slide52,
+    53: Slide53,
+    54: Slide54,
+    55: Slide55,
+    56: Slide56,
     57: Slide57
 }
 var all_slides = Object.keys(json_slides);
@@ -340,18 +391,18 @@ function App() {
     const [seconds, setSeconds] = useState(20);
  
 
-    var min = 1;
-    var max = 16;
+    var min = 34;
+    var max = 36;
     var rand = min + Math.floor(Math.random() * (max - min));
     // console.log (rand);
-    const [leftSlide, setLeftSlide] = React.useState(rand);   // rand
+    const [leftSlide, setLeftSlide] = React.useState(35);   // rand
     
-    min = 17;
-    max = 32;
+    min = 37;
+    max = 39;
     rand = min + Math.floor(Math.random() * (max - min));
 
 
-    const [rightSlide, setRightSlide] = React.useState(rand);
+    const [rightSlide, setRightSlide] = React.useState(52);// rand
     
     const bgLeft = "./slides/Slide" + leftSlide + ".png";
     const bgRight = "./slides/Slide" + rightSlide + ".png";
@@ -380,12 +431,7 @@ function App() {
     var [found, setFound] = React.useState(0);
     var [turns, setTurns] = React.useState(0);
     var [hint, setHint] = React.useState('');
-    //const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    //console.log(highScores);
-    
-    //var [topscore, setTopscore] = React.useState(0);
-
-
+ 
    
     var [conservationStatusList, setConservationStatusList] = React.useState(['green', 'amber', 'red']);
 
@@ -395,9 +441,9 @@ function App() {
         'red': '#dc4f16'
     }
     const statusMessage = {
-        'green': 'Conservation status (GREEN).  Find the matching pairs of birds as fast as you can...',
-        'amber': 'Conservation status (AMBER).  Are you using the clues?',
-        'red': 'Conservation status (RED).  Look out for birds while you still can!!!'
+        'green': 'Conservation status: GREEN.   ',
+        'amber': 'Conservation status: AMBER.   ',
+        'red':   'Conservation status:   RED.   '
     }
     
 
@@ -444,10 +490,15 @@ function App() {
 
     const updateStatus = useCallback(() => {
 
+
+
         if (status !== 'red') {
+            
             let current_status_list = conservationStatusList;
             current_status_list = conservationStatusList.slice(1);
+            
             setStatus(current_status_list[0]);
+
             setConservationStatusList(current_status_list);
             setSeconds(20);
 
@@ -477,6 +528,9 @@ function App() {
                     let clue = titleCase(birds[solution]);
                     setHint( "Clue: " + clue   );
                 } 
+                if (seconds > 12 && seconds < 18 ){
+                    setHint('');
+                }
             
 
             }, 1000);
@@ -634,7 +688,7 @@ function App() {
                 );
             }
 
-            setHint('Well done! You have just found a ' + titleCase(birds[clicked_bird])  );
+            setHint('Well done! You have just found a ' + titleCase(birds[clicked_bird])   );
 
             // wellDone(clicked_bird);
 
@@ -677,7 +731,7 @@ function App() {
                                 alignItems: "center",
                                 backgroundColor: statusKey[status]
                             }}>
-                                <h3 style={{ color: "white" }}>{statusMessage[status]}</h3>
+                                <h3 style={{ color: "white" }}>{statusMessage[status]}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {11 - turns} to find</h3>
                                 
                             </div>
                             <div style={{ position: "absolute", top: "45px", left: "50%" }}>
@@ -738,7 +792,7 @@ function App() {
                         src={bgLeft}
                         onLoadBg={() =>	{
                             setBgLeftIsLoaded(true);	
-                            console.log('bgLeftIsLoaded', bgLeftIsLoaded);
+                            console.log('   ', bgLeftIsLoaded);
                         }	
                        } 	
                     />	
@@ -751,7 +805,7 @@ function App() {
                     }	
                     />	
                          
-
+                       
                   
             </div>
             
@@ -809,7 +863,7 @@ function GameOver(finalscore, found, status, solution) {
                                 alignItems: "center",
                                 backgroundColor: "black"
                             }}>
-                                <h3 style={{ color: "white" }}> High score: &nbsp; &nbsp; {hs.player} ............ {hs.score} points</h3>
+                                <h3 style={{ color: "white" }}>  You ended up on {title}   </h3>
                                 
                             </div>
          
@@ -822,7 +876,7 @@ function GameOver(finalscore, found, status, solution) {
                             alignItems: "center",
                             /* backgroundColor: "#dc4f16" */
                         }}>
-                            <h3 className="birdlabel">Your score: {derivedscore} points</h3>  
+                            <h3 className="birdlabel">You scored {derivedscore}</h3>  
                           
                         </div>
                     </Grid.Column>
@@ -830,7 +884,7 @@ function GameOver(finalscore, found, status, solution) {
                 <Grid.Row columns={2}>
                     <Grid.Column>
                         <div>
-                            <h5 className="notification">You ended up on {title}... </h5>
+                            
                             <h5 className="birdFact" style={{ textAlign: "center" }}> {funfacts[solution]}  </h5>
                         </div>
                     </Grid.Column>
@@ -839,13 +893,29 @@ function GameOver(finalscore, found, status, solution) {
                         <div>
                             <img className="birdHero" alt="twitch-card" src={bird_images[solution]} style={{
                                 position: "relative",
-                                top: "-10px",
+                                top: "-33px",
                                 left: "-50px",
                                 height: "330px"
                             }} />
                         </div>
                     </Grid.Column>
                 </Grid.Row>
+                <Grid.Row columns={1} >
+                        <Grid.Column>
+                            <div style={{
+                                position: "absolute",
+                                top: "-72px",
+                                width: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                backgroundColor: 'black'
+                            }}>
+                                <h5 style={{ color: "white" }}>High score: &nbsp; &nbsp; {hs.player} &nbsp; &nbsp;&nbsp; &nbsp; {hs.score} points</h5>
+                                
+                            </div>          
+                            </Grid.Column>
+                    </Grid.Row>
             </Grid>
             <h1 className="score5" onClick={() => window.location.reload()} >Play again?</h1>
         </>
@@ -885,9 +955,14 @@ function saveHighScores(derivedscore){
     if ( derivedscore > parseInt(hs) ) {
          localStorage.setItem('highScores', derivedscore);
          playername = prompt("Congratulations! \nYou made a new highscore. \nPlease enter your name, (in 20 characters)");
-         playername = playername.substr(0,20);
+         if ( playername ) {
+            playername = playername.substr(0,20);
+         } else{
+            playername = '';
+         }
          localStorage.setItem('playername', playername);
          return { 'score': derivedscore, 'player': playername};
+           
     }
 
     return {'score' : hs, 'player': playername}; 
