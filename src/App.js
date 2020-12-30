@@ -2,6 +2,13 @@ import ReactDOM from 'react-dom';
 import React, { useEffect, useState, useCallback  } from "react";
 import './App.css';
 import BackgroundImageOnLoad from 'background-image-on-load';
+import UIfx from 'uifx'
+// import magpieSfx from './bird_song/magpie.mp3';
+import goshawkSfx from './bird_song/goshawk.mp3';
+import egyptianVultureSfx from './bird_song/XC580021EgyptianVulture.mp3';
+ 
+
+
 //  JSON files generated from prep'ed SVGs at https://react-vector-maps.netlify.app/converter/
 import { VectorMap } from '@south-paw/react-vector-maps';
 import Slide1 from './deck_birds/json/Slide1.json';
@@ -128,8 +135,35 @@ import bird55 from './outputs-watercolor/twitch-logo.png';
 import bird56 from './outputs-watercolor/waxwing.png';
 import bird57 from './outputs-watercolor/yellowhammer.png';
 
+import AnimateOnChange from 'react-animate-on-change';
+ 
 
 
+// const magpieSong = new UIfx(
+//     magpieSfx,
+//     {
+//       volume: 0.4, // number between 0.0 ~ 1.0
+//       throttleMs: 100
+//     }
+//   )
+ 
+  const goshawkSong = new UIfx(
+    goshawkSfx,
+    {
+      volume: 0.4, // number between 0.0 ~ 1.0
+      throttleMs: 100
+    }
+  )
+
+  const egyptianVultureSong = new UIfx(
+    egyptianVultureSfx,
+    {
+        volume: 0.8, // number between 0.0 ~ 1.0
+        throttleMs: 100
+    }
+  )
+ 
+  
 const bird_images = {
     1: bird1,
     2: bird2,
@@ -394,22 +428,21 @@ function App() {
     var min = 34;
     var max = 36;
     var rand = min + Math.floor(Math.random() * (max - min));
-    // console.log (rand);
-    const [leftSlide, setLeftSlide] = React.useState(rand);   // rand
+     console.log (rand);
+    const [leftSlide, setLeftSlide] = React.useState(13);   // rand
     
     min = 37;
     max = 39;
     rand = min + Math.floor(Math.random() * (max - min));
 
 
-    const [rightSlide, setRightSlide] = React.useState(rand);// rand
+    const [rightSlide, setRightSlide] = React.useState(37);// rand
     
     const bgLeft = "./slides/Slide" + leftSlide + ".png";
     const bgRight = "./slides/Slide" + rightSlide + ".png";
     const bgLoading = "./card_plain.png";
     const [bgRightIsLoaded, setBgRightIsLoaded]  = useState(false);
     const [bgLeftIsLoaded, setBgLeftIsLoaded]  = useState(false);
-
     
 
     const style_left = {
@@ -428,6 +461,7 @@ function App() {
    // var game_status = 'active';
     var [status, setStatus] = React.useState('green');
     var [score, setScore] = React.useState(0);
+    var [diff, setDiff] = React.useState(0);
     var [found, setFound] = React.useState(0);
     var [turns, setTurns] = React.useState(0);
     var [hint, setHint] = React.useState('');
@@ -516,6 +550,10 @@ function App() {
 
     useEffect(() => {
         let interval = null;
+
+
+        
+
  
         if (seconds > 0) {
             
@@ -523,6 +561,10 @@ function App() {
 
             interval = setInterval(() => {
                 setSeconds(seconds => seconds - 1);  // 
+
+                if (seconds < 20){
+                        setDiff(0);
+                }
 
                 if (seconds < 12 ) {
                     let clue = titleCase(birds[solution]);
@@ -578,7 +620,7 @@ function App() {
 
         if (newLeft !== leftSlide) {
             console.log('*******  error in code *********')
-            console.log('newLeft = ' + leftSlide);
+            console.log('newLeft = ' + newLeft);
             console.log('... but state variable leftSlide = ' + leftSlide);
         }
 
@@ -591,7 +633,7 @@ function App() {
 
         if (newRight !== rightSlide) {
             console.log('*******  error in code *********')
-            console.log('newRight = ' + rightSlide);
+            console.log('newRight = ' + newRight);
             console.log('... but state variable rightSlide = ' + rightSlide);
 
          
@@ -651,6 +693,9 @@ function App() {
         // setClicked(clicked_bird);   // not needed
         if (clicked_bird === solution) {
 
+            if (seconds > 15){
+                goshawkSong.play();
+            }
             console.log(" solution xxxxxxxxxxxxx: " + solution  );
             if ( parseInt(solution) === 55){
                 // give a status bonus just for fun!
@@ -662,8 +707,13 @@ function App() {
             setTurns(turns + 1);
 
             setFound(found + 1);
+      
+            setDiff(true);
 
             setScore(score + seconds);
+
+            
+
 
             if (turns < 9) {
 
@@ -675,8 +725,8 @@ function App() {
 
                 setBgRightIsLoaded(false);	
                 
-               
-
+                 
+                
 
             } else {
 
@@ -688,11 +738,16 @@ function App() {
                 );
             }
 
-            setHint('Well done! You have just found a ' + titleCase(birds[clicked_bird])   );
+            setHint('You just found a ' + titleCase(birds[clicked_bird])   );
+
+            
 
             // wellDone(clicked_bird);
 
         } else {
+
+            egyptianVultureSong.play();
+
             updateStatus();
         }
     }
@@ -704,8 +759,6 @@ function App() {
         // onBlur: ({ target }) => setFocused('None'),
         onClick: ({ target }) => checkClicked(target.attributes.name.value),
     };
-
-
 
 
 
@@ -735,8 +788,20 @@ function App() {
                                 
                             </div>
                             <div style={{ position: "absolute", top: "45px", left: "50%" }}>
-                                <h3 style={{ color: "black" }}>{score}</h3>
+                                 
+                                    
                                
+                            <AnimateOnChange
+                                    baseClassName="Score"
+                                    animationClassName="Score--bounce"
+                                    animate={diff > 0}>
+                                    {score}
+                                   
+                                </AnimateOnChange>
+
+                                
+
+                             
 
                                     
 
@@ -801,6 +866,7 @@ function App() {
                         onLoadBg={() =>	{
                             setBgRightIsLoaded(true);	
                             console.log('bgRightIsLoaded', bgRightIsLoaded);
+                       
                         }
                     }	
                     />	
@@ -866,19 +932,31 @@ function GameOver(finalscore, found, status, solution) {
                                 <h3 style={{ color: "white" }}>  You ended up on {title}   </h3>
                                 
                             </div>
-         
-            <Grid align="Center">
+        h
+  s         <Grid align="Center">
                 <Grid.Row columns={1} >
                     <Grid.Column>
-                        <div style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            /* backgroundColor: "#dc4f16" */
-                        }}>
-                            <h3 className="birdlabel">You scored {derivedscore}</h3>  
-                          
-                        </div>
+                    <div style={{ position: "absolute", top: "5px", left: "10%" }}>
+                                 
+                               
+                                <AnimateOnChange
+                                         baseClassName="highscore"
+                                         animationClassName="Score--bounce"
+                                         animate="true">
+                                         You scored {derivedscore}
+                                        
+                                </AnimateOnChange>
+     
+    
+                                  
+     
+                                         
+     
+                                 </div>
+
+                                 <div style={{ position: "absolute", top: "5px", left: "60%" }}><span class="highscore">Highest score: &nbsp; &nbsp; {hs.score} &nbsp;  {hs.player}</span></div>
+
+
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={2}>
@@ -911,7 +989,7 @@ function GameOver(finalscore, found, status, solution) {
                                 alignItems: "center",
                                 backgroundColor: 'black'
                             }}>
-                                <h5 style={{ color: "white" }}>High score: &nbsp; &nbsp; {hs.player} &nbsp; &nbsp;&nbsp; &nbsp; {hs.score} points</h5>
+    
                                 
                             </div>          
                             </Grid.Column>
