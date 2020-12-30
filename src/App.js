@@ -4,38 +4,38 @@ import './App.css';
 import BackgroundImageOnLoad from 'background-image-on-load';
 //  JSON files generated from prep'ed SVGs at https://react-vector-maps.netlify.app/converter/
 import { VectorMap } from '@south-paw/react-vector-maps';
-// import Slide1 from './deck_birds/json/Slide1.json';
-// import Slide2 from './deck_birds/json/Slide2.json';
-// import Slide3 from './deck_birds/json/Slide3.json';
-// import Slide4 from './deck_birds/json/Slide4.json';
-// import Slide5 from './deck_birds/json/Slide5.json';
-// import Slide6 from './deck_birds/json/Slide6.json';
-// import Slide7 from './deck_birds/json/Slide7.json';
-// import Slide8 from './deck_birds/json/Slide8.json';
-// import Slide9 from './deck_birds/json/Slide9.json';
-// import Slide10 from './deck_birds/json/Slide10.json';
-// import Slide11 from './deck_birds/json/Slide11.json';
-// import Slide12 from './deck_birds/json/Slide12.json';
-// import Slide13 from './deck_birds/json/Slide13.json';
-// import Slide14 from './deck_birds/json/Slide14.json';
-// import Slide15 from './deck_birds/json/Slide15.json';
-// import Slide16 from './deck_birds/json/Slide16.json';
-// import Slide17 from './deck_birds/json/Slide17.json';
-// import Slide18 from './deck_birds/json/Slide18.json';
-// import Slide19 from './deck_birds/json/Slide19.json';
-// import Slide20 from './deck_birds/json/Slide20.json';
-// import Slide21 from './deck_birds/json/Slide21.json';
-// import Slide22 from './deck_birds/json/Slide22.json';
-// import Slide23 from './deck_birds/json/Slide23.json';
-// import Slide24 from './deck_birds/json/Slide24.json';
-// import Slide25 from './deck_birds/json/Slide25.json';
-// import Slide26 from './deck_birds/json/Slide26.json';
-// import Slide27 from './deck_birds/json/Slide27.json';
-// import Slide28 from './deck_birds/json/Slide28.json';
-// import Slide29 from './deck_birds/json/Slide29.json';
-// import Slide30 from './deck_birds/json/Slide30.json';
-// import Slide31 from './deck_birds/json/Slide31.json';
-// import Slide32 from './deck_birds/json/Slide32.json';
+import Slide1 from './deck_birds/json/Slide1.json';
+import Slide2 from './deck_birds/json/Slide2.json';
+import Slide3 from './deck_birds/json/Slide3.json';
+import Slide4 from './deck_birds/json/Slide4.json';
+import Slide5 from './deck_birds/json/Slide5.json';
+import Slide6 from './deck_birds/json/Slide6.json';
+import Slide7 from './deck_birds/json/Slide7.json';
+import Slide8 from './deck_birds/json/Slide8.json';
+import Slide9 from './deck_birds/json/Slide9.json';
+import Slide10 from './deck_birds/json/Slide10.json';
+import Slide11 from './deck_birds/json/Slide11.json';
+import Slide12 from './deck_birds/json/Slide12.json';
+import Slide13 from './deck_birds/json/Slide13.json';
+import Slide14 from './deck_birds/json/Slide14.json';
+import Slide15 from './deck_birds/json/Slide15.json';
+import Slide16 from './deck_birds/json/Slide16.json';
+import Slide17 from './deck_birds/json/Slide17.json';
+import Slide18 from './deck_birds/json/Slide18.json';
+import Slide19 from './deck_birds/json/Slide19.json';
+import Slide20 from './deck_birds/json/Slide20.json';
+import Slide21 from './deck_birds/json/Slide21.json';
+import Slide22 from './deck_birds/json/Slide22.json';
+import Slide23 from './deck_birds/json/Slide23.json';
+import Slide24 from './deck_birds/json/Slide24.json';
+import Slide25 from './deck_birds/json/Slide25.json';
+import Slide26 from './deck_birds/json/Slide26.json';
+import Slide27 from './deck_birds/json/Slide27.json';
+import Slide28 from './deck_birds/json/Slide28.json';
+import Slide29 from './deck_birds/json/Slide29.json';
+import Slide30 from './deck_birds/json/Slide30.json';
+import Slide31 from './deck_birds/json/Slide31.json';
+import Slide32 from './deck_birds/json/Slide32.json';
 
 import Slide33 from './deck_birds/json/Slide33.json';
 import Slide34 from './deck_birds/json/Slide34.json';
@@ -191,38 +191,38 @@ const bird_images = {
 }
 
 const json_slides = {
-    // 1: Slide1,
-    // 2: Slide2,
-    // 3: Slide3,
-    // 4: Slide4,
-    // 5: Slide5,
-    // 6: Slide6,
-    // 7: Slide7,
-    // 8: Slide8,
-    // 9: Slide9,
-    // 10: Slide10,
-    // 11: Slide11,
-    // 12: Slide12,
-    // 13: Slide13,
-    // 14: Slide14,
-    // 15: Slide15,
-    // 16: Slide16,
-    // 17: Slide17,
-    // 18: Slide18,
-    // 19: Slide19,
-    // 20: Slide20,
-    // 21: Slide21,
-    // 22: Slide22,
-    // 23: Slide23,
-    // 24: Slide24,
-    // 25: Slide25,
-    // 26: Slide26,
-    // 27: Slide27,
-    // 28: Slide28,
-    // 29: Slide29,
-    // 30: Slide30,
-    // 31: Slide31,
-    // 32: Slide32,
+    1: Slide1,
+    2: Slide2,
+    3: Slide3,
+    4: Slide4,
+    5: Slide5,
+    6: Slide6,
+    7: Slide7,
+    8: Slide8,
+    9: Slide9,
+    10: Slide10,
+    11: Slide11,
+    12: Slide12,
+    13: Slide13,
+    14: Slide14,
+    15: Slide15,
+    16: Slide16,
+    17: Slide17,
+    18: Slide18,
+    19: Slide19,
+    20: Slide20,
+    21: Slide21,
+    22: Slide22,
+    23: Slide23,
+    24: Slide24,
+    25: Slide25,
+    26: Slide26,
+    27: Slide27,
+    28: Slide28,
+    29: Slide29,
+    30: Slide30,
+    31: Slide31,
+    32: Slide32,
     
     33: Slide33,
     34: Slide34,
@@ -395,14 +395,14 @@ function App() {
     var max = 36;
     var rand = min + Math.floor(Math.random() * (max - min));
     // console.log (rand);
-    const [leftSlide, setLeftSlide] = React.useState(35);   // rand
+    const [leftSlide, setLeftSlide] = React.useState(rand);   // rand
     
     min = 37;
     max = 39;
     rand = min + Math.floor(Math.random() * (max - min));
 
 
-    const [rightSlide, setRightSlide] = React.useState(52);// rand
+    const [rightSlide, setRightSlide] = React.useState(rand);// rand
     
     const bgLeft = "./slides/Slide" + leftSlide + ".png";
     const bgRight = "./slides/Slide" + rightSlide + ".png";
@@ -665,7 +665,7 @@ function App() {
 
             setScore(score + seconds);
 
-            if (turns < 10) {
+            if (turns < 9) {
 
                 resetSlides();
 
@@ -731,7 +731,7 @@ function App() {
                                 alignItems: "center",
                                 backgroundColor: statusKey[status]
                             }}>
-                                <h3 style={{ color: "white" }}>{statusMessage[status]}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {11 - turns} to find</h3>
+                                <h3 style={{ color: "white" }}>{statusMessage[status]}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {10 - turns} to find</h3>
                                 
                             </div>
                             <div style={{ position: "absolute", top: "45px", left: "50%" }}>
@@ -792,7 +792,7 @@ function App() {
                         src={bgLeft}
                         onLoadBg={() =>	{
                             setBgLeftIsLoaded(true);	
-                            console.log('   ', bgLeftIsLoaded);
+                            console.log('bgLeftIsLoaded', bgLeftIsLoaded);
                         }	
                        } 	
                     />	
