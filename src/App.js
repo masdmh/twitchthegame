@@ -4,9 +4,9 @@ import './App.css';
 import BackgroundImageOnLoad from 'background-image-on-load';
 import UIfx from 'uifx'
 // import magpieSfx from './bird_song/magpie.mp3';
-import goshawkSfx from './bird_song/goshawk.mp3';
-import egyptianVultureSfx from './bird_song/XC580021EgyptianVulture.mp3';
- 
+//import goshawkSfx from './bird_song/goshawk.mp3';
+// import egyptianVultureSfx from './bird_song/XC580021EgyptianVulture.mp3';
+import crowSfx from './bird_song/CROW4.mp3';
 
 
 //  JSON files generated from prep'ed SVGs at https://react-vector-maps.netlify.app/converter/
@@ -139,6 +139,17 @@ import AnimateOnChange from 'react-animate-on-change';
  
 
 
+
+
+const crowSong = new UIfx(
+    crowSfx,
+    {
+      volume: 0.8, // number between 0.0 ~ 1.0
+      throttleMs: 100
+    }
+  )
+
+
 // const magpieSong = new UIfx(
 //     magpieSfx,
 //     {
@@ -147,21 +158,21 @@ import AnimateOnChange from 'react-animate-on-change';
 //     }
 //   )
  
-  const goshawkSong = new UIfx(
-    goshawkSfx,
-    {
-      volume: 0.4, // number between 0.0 ~ 1.0
-      throttleMs: 100
-    }
-  )
+//   const goshawkSong = new UIfx(
+//     goshawkSfx,
+//     {
+//       volume: 0.4, // number between 0.0 ~ 1.0
+//       throttleMs: 100
+//     }
+//   )
 
-  const egyptianVultureSong = new UIfx(
-    egyptianVultureSfx,
-    {
-        volume: 0.8, // number between 0.0 ~ 1.0
-        throttleMs: 100
-    }
-  )
+//   const egyptianVultureSong = new UIfx(
+//     egyptianVultureSfx,
+//     {
+//         volume: 0.8, // number between 0.0 ~ 1.0
+//         throttleMs: 100
+//     }
+//   )
  
   
 const bird_images = {
@@ -694,7 +705,7 @@ function App() {
         if (clicked_bird === solution) {
 
             if (seconds > 15){
-                goshawkSong.play();
+                crowSong.play();
             }
             console.log(" solution xxxxxxxxxxxxx: " + solution  );
             if ( parseInt(solution) === 55){
@@ -746,7 +757,7 @@ function App() {
 
         } else {
 
-            egyptianVultureSong.play();
+            // egyptianVultureSong.play();
 
             updateStatus();
         }
@@ -929,33 +940,16 @@ function GameOver(finalscore, found, status, solution) {
                                 alignItems: "center",
                                 backgroundColor: "black"
                             }}>
-                                <h3 style={{ color: "white" }}>  You ended up on {title}   </h3>
+                                <h3 style={{ color: "white" }}>  You scored {derivedscore} and ended on {title}   </h3>
                                 
                             </div>
         h
   s         <Grid align="Center">
                 <Grid.Row columns={1} >
                     <Grid.Column>
-                    <div style={{ position: "absolute", top: "5px", left: "10%" }}>
-                                 
-                               
-                                <AnimateOnChange
-                                         baseClassName="highscore"
-                                         animationClassName="Score--bounce"
-                                         animate="true">
-                                         You scored {derivedscore}
-                                        
-                                </AnimateOnChange>
-     
-    
-                                  
-     
-                                         
-     
-                                 </div>
+                
 
-                                 <div style={{ position: "absolute", top: "5px", left: "60%" }}><span class="highscore">Highest score: &nbsp; &nbsp; {hs.score} &nbsp;  {hs.player}</span></div>
-
+                                
 
                     </Grid.Column>
                 </Grid.Row>
@@ -987,9 +981,11 @@ function GameOver(finalscore, found, status, solution) {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                backgroundColor: 'black'
+                                backgroundColor: 'black',
+                                color: "white"
                             }}>
-    
+                    <h5>High score: &nbsp; &nbsp; {hs.score} &nbsp;  {hs.player}</h5>
+
                                 
                             </div>          
                             </Grid.Column>
