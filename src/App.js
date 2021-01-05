@@ -3,6 +3,7 @@ import './App.css';
 import {  Route } from 'react-router-dom';
 // import Header from "./Header";
 // import Footer from "./Footer";
+// import CheckSlides from "./CheckSlides";
 import Game from './Game.jsx';
 import Help from './Help.jsx';
 import Birds from './Birds.jsx';
@@ -39,6 +40,7 @@ function App() {
                     <Route exact path="/help" component={Help} />
                     <Route exact path="/birds" component={Birds} />
                     <Route exact path="/register" component={Register} />
+                     
               
             </main>
         {/* <Footer/> */}
