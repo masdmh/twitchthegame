@@ -3,7 +3,7 @@ import './App.css';
 import {  Route } from 'react-router-dom';
 // import Header from "./Header";
 // import Footer from "./Footer";
-// import CheckSlides from "./CheckSlides";
+// import CheckSlides from "./CheckSlides";  // use to check 57 x 57 sets of 8 for one common match - it found no errors until I manually added one
 import Game from './Game.jsx';
 import Help from './Help.jsx';
 import Birds from './Birds.jsx';

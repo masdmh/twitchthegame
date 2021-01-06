@@ -727,6 +727,13 @@ function Game() {
 
             if (turns < 9) {
 
+
+
+
+                 // TODO set visibility on a "bird found component" which pauses the game until the player clicks to continue //
+
+                 
+
                 resetSlides();
 
                 setSeconds(20);
@@ -735,7 +742,8 @@ function Game() {
 
                 setBgRightIsLoaded(false);	
                 
-                 
+
+
                 
 
             } else {
